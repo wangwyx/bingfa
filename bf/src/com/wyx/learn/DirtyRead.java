@@ -5,7 +5,7 @@ package com.wyx.learn;
  */
 public class DirtyRead {
     private String username ="ssdf";
-    private String password = "sdfas";
+    private String password = "123";
 
     public synchronized void setValue(String username, String password) {
         this.username = username;
@@ -18,6 +18,7 @@ public class DirtyRead {
         System.out.println("last result:username="+username+",password="+password);
     }
 
+    /*synchronized*/
     public void getValue() {
         System.out.println("getValue:username="+this.username+",password="+this.password);
     }
@@ -27,7 +28,7 @@ public class DirtyRead {
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
-                d1.setValue("sdf","dsfa");
+                d1.setValue("sdf","456");
             }
         },"t1");
         t1.start();
