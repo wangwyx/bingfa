@@ -1,0 +1,3 @@
+1.future 模式
+2.masker－worker 并行计算
+3.生产－消费者模式
