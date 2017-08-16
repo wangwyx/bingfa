@@ -31,8 +31,8 @@ public class UseThreadPoolExecutor2 implements Runnable{
 		 */
 		//System.out.println(Runtime.getRuntime().availableProcessors());
 		BlockingQueue<Runnable> queue = 
-				//new LinkedBlockingQueue<Runnable>();
-				new ArrayBlockingQueue<Runnable>(10);
+				new LinkedBlockingQueue<Runnable>();
+//				new ArrayBlockingQueue<Runnable>(10);
 		//不同队列，不通方式
 		ExecutorService executor  = new ThreadPoolExecutor(
 					5, 		//core

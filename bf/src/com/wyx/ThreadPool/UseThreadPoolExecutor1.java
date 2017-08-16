@@ -21,11 +21,11 @@ public class UseThreadPoolExecutor1 {
 		 * 若队列已满，则在总线程数不大于maximumPoolSize的前提下，创建新的线程，
 		 * 若线程数大于maximumPoolSize，则执行拒绝策略。或其他自定义方式。
 		 * jdk拒绝策略：
-		 * abortpolicy：
+		 * AbortPolicy：
 		 * CallersRunPolicy:
-		 * DiscardOldestpolicy
-		 * discardpolicy
-		 * 自定义策略事项rejectedexecutetionhandler
+		 * DiscardOldestPolicy
+		 * DiscardPolicy
+		 * 自定义策略事项RejectedExecutionHandler
 		 */	
 		ThreadPoolExecutor pool = new ThreadPoolExecutor(
 				1, 				//coreSize
