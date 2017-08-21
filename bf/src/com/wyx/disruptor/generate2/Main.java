@@ -28,7 +28,7 @@ public class Main {
         }, bufferSize, executor, ProducerType.SINGLE, new BusySpinWaitStrategy());  
         
         //菱形操作
-        /**
+        /** handleEventsWith 里没有顺序，并行执行hadler
         //使用disruptor创建消费者组C1,C2  
         EventHandlerGroup<Trade> handlerGroup = 
         		disruptor.handleEventsWith(new Handler1(), new Handler2());
