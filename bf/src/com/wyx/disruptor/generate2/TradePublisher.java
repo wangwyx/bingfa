@@ -1,16 +1,17 @@
 package com.wyx.disruptor.generate2;
 
+import com.lmax.disruptor.EventTranslator;
+import com.lmax.disruptor.dsl.Disruptor;
+import com.wyx.disruptor.generate1.Trade;
+
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
-import bhz.generate1.Trade;
 
-import com.lmax.disruptor.EventTranslator;
-import com.lmax.disruptor.dsl.Disruptor;
 
 public class TradePublisher implements Runnable {  
 	
-    Disruptor<Trade> disruptor;  
+    Disruptor<Trade> disruptor;
     private CountDownLatch latch;  
     
     private static int LOOP=10;//模拟百万次交易的发生  
@@ -31,7 +32,7 @@ public class TradePublisher implements Runnable {
       
 }  
   
-class TradeEventTranslator implements EventTranslator<Trade>{  
+class TradeEventTranslator implements EventTranslator<Trade> {
     
 	private Random random=new Random();  
     

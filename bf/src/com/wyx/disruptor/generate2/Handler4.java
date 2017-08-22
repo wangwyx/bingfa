@@ -1,13 +1,11 @@
 package com.wyx.disruptor.generate2;
 
-import java.util.UUID;
-
-import bhz.generate1.Trade;
 
 import com.lmax.disruptor.EventHandler;
 import com.lmax.disruptor.WorkHandler;
+import com.wyx.disruptor.generate1.Trade;
 
-public class Handler4 implements EventHandler<Trade>,WorkHandler<Trade> {  
+public class Handler4 implements EventHandler<Trade>,WorkHandler<Trade> {
 	  
     @Override  
     public void onEvent(Trade event, long sequence, boolean endOfBatch) throws Exception {  

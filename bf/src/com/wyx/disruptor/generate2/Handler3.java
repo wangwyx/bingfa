@@ -1,8 +1,8 @@
 package com.wyx.disruptor.generate2;
 
-import bhz.generate1.Trade;
 
 import com.lmax.disruptor.EventHandler;
+import com.wyx.disruptor.generate1.Trade;
 
 public class Handler3 implements EventHandler<Trade> {
     @Override  
