@@ -82,10 +82,11 @@ public class TestBuffer {
 	@Test
 	public void test1(){
 		String str = "abcde";
-		
-		//1. 分配一个指定大小的缓冲区
+		byte[] myarr = new byte[1024];
+		//1. 分配一个指定大小的缓冲区,间接的
 		ByteBuffer buf = ByteBuffer.allocate(1024);
-		
+		ByteBuffer buf1 = ByteBuffer.wrap(myarr);
+		buf1.duplicate();// 复制一个新的缓冲区
 		System.out.println("-----------------allocate()----------------");
 		System.out.println(buf.position());
 		System.out.println(buf.limit());
@@ -100,7 +101,7 @@ public class TestBuffer {
 		System.out.println(buf.capacity());
 		
 		//3. 切换读取数据模式
-		buf.flip();
+		buf.flip();//对缓冲区进行反转，limit＝pos；pos＝0
 		
 		System.out.println("-----------------flip()----------------");
 		System.out.println(buf.position());
