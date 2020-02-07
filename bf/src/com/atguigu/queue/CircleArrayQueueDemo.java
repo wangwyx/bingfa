@@ -2,6 +2,17 @@ package com.atguigu.queue;
 
 import java.util.Scanner;
 
+/**数组循环队列
+ * 思路如下:
+ * 1.  front 变量的含义做一个调整： front 就指向队列的第一个元素, 也就是说 arr[front] 就是队列的第一个元素
+ * front 的初始值 = 0
+ * 2.  rear 变量的含义做一个调整：rear 指向队列的最后一个元素的后一个位置. 因为希望空出一个空间做为约定.
+ * rear 的初始值 = 0
+ * 3. 当队列满时，条件是  (rear  + 1) % maxSize == front 【满】
+ * 4. 对队列为空的条件， rear == front 空
+ * 5. 当我们这样分析， 队列中有效的数据的个数   (rear + maxSize - front) % maxSize   // rear = 1 front = 0
+ * 6. 我们就可以在原来的队列上修改得到，一个环形队列
+ */
 public class CircleArrayQueueDemo {
 
 	public static void main(String[] args) {

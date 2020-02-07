@@ -2,6 +2,9 @@ package com.atguigu.linkedlist;
 
 import java.util.Stack;
 
+/**
+ * 单向链表
+ */
 public class SingleLinkedListDemo {
 
 	public static void main(String[] args) {
@@ -26,9 +29,9 @@ public class SingleLinkedListDemo {
 		System.out.println("原来链表的情况~~");
 		singleLinkedList.list();
 		
-//		System.out.println("反转单链表~~");
-//		reversetList(singleLinkedList.getHead());
-//		singleLinkedList.list();
+		System.out.println("反转单链表~~");
+		reversetList(singleLinkedList.getHead());
+		singleLinkedList.list();
 		
 		System.out.println("测试逆序打印单链表, 没有改变链表的结构~~");
 		reversePrint(singleLinkedList.getHead());
@@ -87,6 +90,14 @@ public class SingleLinkedListDemo {
 	}
 	
 	//将单链表反转
+
+	/**
+	 * 思路:
+	 * 1. 先定义一个节点 reverseHead = new HeroNode();
+	 * 2. 从头到尾遍历原来的链表，每遍历一个节点，就将其取出，并放在新的链表reverseHead 的最前端.
+	 * 3. 原来的链表的head.next = reverseHead.next
+	 * @param head
+	 */
 	public static void reversetList(HeroNode head) {
 		//如果当前链表为空，或者只有一个节点，无需反转，直接返回
 		if(head.next == null || head.next.next == null) {
@@ -99,7 +110,7 @@ public class SingleLinkedListDemo {
 		HeroNode reverseHead = new HeroNode(0, "", "");
 		//遍历原来的链表，每遍历一个节点，就将其取出，并放在新的链表reverseHead 的最前端
 		//动脑筋
-		while(cur != null) { 
+		while(cur != null) {
 			next = cur.next;//先暂时保存当前节点的下一个节点，因为后面需要使用
 			cur.next = reverseHead.next;//将cur的下一个节点指向新的链表的最前端
 			reverseHead.next = cur; //将cur 连接到新的链表上

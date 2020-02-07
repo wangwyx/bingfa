@@ -72,6 +72,14 @@ class CircleSingleLinkedList {
 	 *            表示数几下
 	 * @param nums
 	 *            表示最初有多少小孩在圈中
+	 *
+	 *            1.  需求创建一个辅助指针(变量) helper , 事先应该指向环形链表的最后这个节点.
+	 * 补充： 小孩报数前，先让 first 和  helper 移动 k - 1次
+	 * 2.  当小孩报数时，让first 和 helper 指针同时 的移动  m  - 1 次
+	 * 3.  这时就可以将first 指向的小孩节点 出圈
+	 * first = first .next
+	 * helper.next = first
+	 * 原来first 指向的节点就没有任何引用，就会被回收
 	 */
 	public void countBoy(int startNo, int countNum, int nums) {
 		// 先对数据进行校验
