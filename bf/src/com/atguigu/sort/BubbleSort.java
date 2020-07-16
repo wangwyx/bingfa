@@ -3,8 +3,7 @@ package com.atguigu.sort;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
-
-
+import java.util.Stack;
 
 
 public class BubbleSort {
@@ -112,6 +111,84 @@ public class BubbleSort {
 				flag = false; // 重置flag!!!, 进行下次判断
 			}
 		}
+	}
+
+	public static void bubbleSort2(int[] arras){
+
+		int lastSwappedIndex = 0; //记录最后一次交换的位置
+		int sortBorder = arras.length - 1; //将有序和无序部分的边界初始化为最后一个元素
+		for (int i = 0; i < arras.length-1; i++) {
+			boolean swapFlag = false;
+			for (int j = 0; j < sortBorder; j++) {
+				if (arras[j] > arras[j + 1]) {
+					int temp = arras[j];
+					arras[j] = arras[j + 1];
+					arras[j + 1] = temp;
+					swapFlag = true;
+					lastSwappedIndex = j;
+				}
+			}
+			sortBorder = lastSwappedIndex;
+			if (!swapFlag) {
+				break;
+			}
+			System.out.println("外部循环i:"+i);
+		}
+		System.out.println(Arrays.toString(arras));
+	}
+
+	// 使用栈进行冒泡排序
+	public static void bubbleSortStack(int arr[], int n) {
+		Stack<Integer> s1 = new Stack<>();
+
+		// 将 arr 中的所有元素压入栈 s1
+		for (int num : arr)
+			s1.push(num);
+
+		Stack<Integer> s2 = new Stack<>();
+
+		for (int i = 0; i < n; i++) {
+			// 初始时 s1 不为空，使用i 的奇偶来决定将哪一个栈中的元素转移到另外一个栈
+			if (i % 2 == 0){
+				while (!s1.isEmpty()){
+					int t = s1.pop();
+
+					if (s2.isEmpty())
+						s2.push(t);
+					else{
+						if (s2.peek() > t){
+							// 交换操作
+							int temp = s2.pop();
+							s2.push(t);
+							s2.push(temp);
+						}else{
+							s2.push(t);
+						}
+					}
+				}
+
+				// 将找到的最大元素放到正确的位置 n-i-1
+				arr[n-1-i] = s2.pop();
+			}else{
+				while(!s2.isEmpty())
+				{
+					int t = s2.pop();
+
+					if (s1.isEmpty())
+						s1.push(t);
+					else{
+						if (s1.peek() > t){
+							int temp = s1.pop();
+							s1.push(t);
+							s1.push(temp);
+						}else
+							s1.push(t);
+					}
+				}
+				arr[n-1-i] = s1.pop();
+			}
+		}
+		System.out.println(Arrays.toString(arr));
 	}
 
 }
